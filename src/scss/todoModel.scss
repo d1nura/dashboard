@@ -1,0 +1,126 @@
+.todoModelOutside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // border: 1px solid red;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgb(5, 125, 223);
+  opacity: (0.8);
+  z-index: 21;
+  overflow: hidden;
+}
+
+.todoModelInside {
+  position: fixed;
+  background: rgb(255, 255, 255);
+  // border-radius: 1rem 0 1rem 0;
+  z-index: 23;
+  left: 50%;
+  top: 10vh;
+  transform: translateX(-50%);
+  //   border: 1px solid red;
+  // width: 70%;
+  // height: 40%;
+  display: none;
+  padding: 1vw;
+  input {
+    border: 1px solid rgb(5, 125, 223);
+    width: 50vw;
+    height: 8vh;
+    padding: 1vw;
+    font-size: 1.2vw;
+    // border-radius: 1rem 0 0 0;
+  }
+}
+
+.btnSection {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  // margin-top: 0.5rem;
+  height: auto;
+  padding: 2vh 0.4vw 0vh 0vw;
+}
+
+#addBtn {
+  display: flex;
+  align-items: baseline;
+  button {
+    position: relative;
+    padding: 1vh 1vw 1vh 1vw;
+    font-size: 1.3vw;
+    font-weight: bold;
+    background: rgb(5, 125, 223);
+    color: white;
+    border-radius: 0.2rem;
+  }
+  p {
+    margin-left: 1vw;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#btnIcons {
+  position: relative;
+  i {
+    // border: 1px solid red;
+    font-size: 1.5vw;
+    // margin-left: 1.5vw;
+    color: rgb(5, 125, 223);
+    cursor: pointer;
+    // width: 3vw;
+    padding: 0 0vw 0 1.5vw;
+    text-align: right;
+  }
+}
+
+.palette {
+  // border: 1px solid red;
+
+  background: white;
+  position: absolute;
+  bottom: -300%;
+  right: 0%;
+  display: flex;
+  transform: scale(0);
+  transition: 0.2s;
+  // padding: 1vh;
+}
+#clr {
+  width: 2vw;
+  height: 2vw;
+  // border: 1px solid red;
+  margin: 1vh;
+  &:nth-child(1) {
+    background: orangered;
+  }
+  &:nth-child(2) {
+    background: greenyellow;
+  }
+  &:nth-child(3) {
+    background: yellow;
+  }
+  &:nth-child(4) {
+    background: lightskyblue;
+  }
+}
+
+.todoCalender {
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.calenderStyle {
+  position: fixed;
+  width: 10vw;
+  top: 20vh;
+  right: 0;
+}
