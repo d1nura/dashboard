@@ -3,6 +3,7 @@ import "../scss/todoModel.scss";
 import { useDispatch } from "react-redux";
 import { addTodoItem } from "../actions/actions";
 import TodoCalender from "./TodoCalender";
+import ColorPalette from "./ColorPalette";
 // import Calendar from "react-calendar/dist/entry.nostyle";
 
 function TodoModel({ showModel, setShowModel }) {
@@ -19,16 +20,27 @@ function TodoModel({ showModel, setShowModel }) {
     date: todoDate,
     color: todoColor
   };
-
-  const showTodoModel = () => {
-    setShowModel(false);
-    setShowPalette(false);
-    setShowCalender(false);
+  const resetInput = name => {
+    if (name === "all") {
+      setShowModel(false);
+      setShowPalette(false);
+      setShowCalender(false);
+      ref.current.value = "";
+      setTodoDate("");
+      setTodoColor("");
+    } else if (name) {
+      ref.current.value = "";
+      setTodoDate("");
+      setTodoColor("");
+    } else if (!name) {
+      setShowModel(false);
+      setShowPalette(false);
+      setShowCalender(false);
+    }
   };
+
   const hideModel = () => {
-    setShowPalette(false);
-    setShowCalender(false);
-    setShowModel(false);
+    resetInput("all");
   };
   const setPalette = () => {
     setShowPalette(showPalette ? false : true);
@@ -44,14 +56,10 @@ function TodoModel({ showModel, setShowModel }) {
   };
   const addTodo = () => {
     if (ref.current.value !== "") {
-      setTodo(ref.current.value);
-      // setTodoObj(todoObj.item)
       dispatch(addTodoItem(todoObj));
-      setShowModel(false);
-      setShowPalette(false);
-      setShowCalender(false);
+      resetInput(false);
     }
-    ref.current.value = "";
+    resetInput(true);
   };
 
   return (
@@ -59,12 +67,11 @@ function TodoModel({ showModel, setShowModel }) {
       <div
         className="todoModelOutside"
         style={showModel ? { display: "block" } : {}}
-        onClick={showTodoModel}
+        onClick={hideModel}
       ></div>
       <div
         className="todoModelInside"
         style={showModel ? { display: "block" } : {}}
-        // onClick={showTodoModel}
       >
         <input
           onChange={getInputVal}
@@ -74,27 +81,28 @@ function TodoModel({ showModel, setShowModel }) {
         ></input>
         <div className="btnSection">
           <div id="addBtn">
-            <button onClick={addTodo}>Add</button>
+            <button onClick={addTodo} style={{ background: `${todoColor}` }}>
+              Add
+            </button>
             <p onClick={hideModel}>Cancel</p>
           </div>
           <div id="btnIcons">
-            <i className="fas fa-palette" onClick={setPalette}></i>
+            <i
+              style={{ color: `${todoColor}` }}
+              className="fas fa-palette"
+              onClick={setPalette}
+            ></i>
             <i className="far fa-calendar-alt" onClick={setCalender}></i>
-            <div
-              className="palette"
-              style={showPalette ? { transform: "scale(1)" } : {}}
-            >
-              <div id="clr"></div>
-              <div id="clr"></div>
-              <div id="clr"></div>
-              <div id="clr"></div>
-            </div>
-            <div
-              className="todoCalender"
-              style={showCalender ? { display: "block" } : {}}
-            >
-              <TodoCalender setTodoDate={setTodoDate} />
-            </div>
+            <ColorPalette
+              showPalette={showPalette}
+              setTodoColor={setTodoColor}
+              setShowPalette={setShowPalette}
+            />
+            <TodoCalender
+              setTodoDate={setTodoDate}
+              setShowCalender={setShowCalender}
+              showCalender={showCalender}
+            />
           </div>
         </div>
       </div>

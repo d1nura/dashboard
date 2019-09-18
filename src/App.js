@@ -6,7 +6,7 @@ import CompBox from "./components/CompBox";
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <CompBox />
     </div>
   );

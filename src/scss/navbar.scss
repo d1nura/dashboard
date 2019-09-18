@@ -1,9 +1,10 @@
 .navbar {
   background: white;
+  // background: none;
   z-index: 20;
   position: relative;
   width: 15vw;
-  height: 90vh;
+  height: 100vh;
   top: 0vh;
   box-shadow: 1px 15px 1rem 1px rgb(230, 230, 230);
   &:hover {

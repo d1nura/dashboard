@@ -1,9 +1,12 @@
 .compBox {
   position: fixed;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   display: flex;
-  background: white;
+  // background: rgb(85, 179, 185);
+  // background: url("../pics/1.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .compHolder {
@@ -11,5 +14,5 @@
   //   padding: 1vh 0vw 1vh 1vw;
   //   border: 1px solid red;
   border-radius: 1rem 0 0 0;
-  background: rgb(255, 255, 255);
+  // background: rgb(12, 11, 11);
 }
